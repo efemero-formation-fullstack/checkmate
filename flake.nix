@@ -47,7 +47,7 @@
               echo "host    all        all        127.0.0.1/32    trust" >> .pg/data/pg_hba.conf
               echo "host    all        all        ::1/128         trust" >> .pg/data/pg_hba.conf
               pg_ctl -D .pg/data -l .pg/log/logs -o "-k `pwd`/.pg/run" -o "-p $PGPORT" start
-              PGUSER="" createuser -e -d $PGUSER
+              PGUSER="" psql -d postgres -c "CREATE ROLE $PGUSER NOSUPERUSER CREATEDB NOCREATEROLE INHERIT LOGIN NOREPLICATION NOBYPASSRLS;"
               PGUSER="" psql -d postgres -c "ALTER ROLE $PGUSER WITH PASSWORD '$PGPASSWORD';"
               PGUSER="" createdb  -O $PGUSER -e $PGDATABASE
 
@@ -68,7 +68,7 @@
 
           shellHook = ''
             # Define your project name here
-            export PROJECT_NAME="yolo API"
+            export PROJECT_NAME="Checkmate"
 
             export SNAKE_PROJECT_NAME=`caseconv snake $PROJECT_NAME`
             export PGHOST="$PWD/.pg/run"
