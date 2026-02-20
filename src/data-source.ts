@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Yolo } from "./entities/index.ts";
+import { Mate } from "./entities/index.ts";
 import process from "node:process";
 
 console.log(process.env.DEV);
@@ -14,7 +14,7 @@ export const AppDataSource = new DataSource({
   synchronize: process.env.DEV.toLowerCase() === "true",
   dropSchema: process.env.DEV.toLowerCase() === "true",
   logging: process.env.DEV.toLowerCase() === "true",
-  entities: [Yolo],
+  entities: [Mate],
   migrations: [],
   subscribers: [],
 });

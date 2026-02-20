@@ -1,8 +1,8 @@
 import { Router } from "express";
-import yolo_router from "./yolo.router.ts";
+import mate_router from "./mate.router.ts";
 
 const router = Router();
 
-router.use("/yolo", yolo_router);
+router.use("/mate", mate_router);
 
 export default router;

@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Yolo extends BaseEntity {
+export class Mate extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

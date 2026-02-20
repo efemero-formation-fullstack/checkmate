@@ -1,4 +1,4 @@
-# Yolo API
+# Checkmate
 
 ## 🛠 WORK IN PROGRESS 🛠 
 
@@ -15,6 +15,14 @@ This is not yet a real project, just a structure to be filled
 ## Dependencies
 
 ### With nix flakes (and direnv)
+
+For installing nix, I recommand [nix from determinate systems](https://docs.determinate.systems/).
+
+If you want to autoload the environment with direnv, once nix is installed:
+```
+nix profile add nixpkgs#direnv
+```
+And activate it for your shell according to [the doc](https://direnv.net/docs/hook.html).
 
 If you have nix with flakes installed on your system, you can just type `nix develop`.
 
