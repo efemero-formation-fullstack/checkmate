@@ -8,4 +8,5 @@ temp/
 design/
 .direnv/
 .pg/
-auth_header
+*.pdf
+*.png

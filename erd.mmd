@@ -1,0 +1,50 @@
+---
+config:
+  theme: 'forest'
+title: Checkmate Entitiy Relationship Diagram
+---
+
+erDiagram
+	Player {
+		int id PK "IDENTITY"
+		string nickname "NOT NULL"
+		string email "NOT NULL"
+		string password "NOT NULL"
+		int elo
+		date birth_date
+		enum genre "MALE,FEMALE,OTHER"
+		enum role "ADMIN,PLAYER"
+	}
+
+	Tournament {
+		int id PK "IDENTITY"
+		string name "NOT NULL"
+		enum status "WAITING_PLAYERS,CONFIRMED,CANCELED,STARTED,FINISHED"
+		string location
+		int min_player "NOT NULL"
+		int max_player "NOT NULL"
+		int min_elo "NOT NULL"
+		int max_elo "NOT NULL"
+		int round "NOT NULL"
+		bool women_only "NOT NULL"
+		date registration_closing_date "NOT NULL"
+		date create_date "NOT NULL"
+		date update_date "NOT NULL"
+	}
+
+	Category {
+		int id PK "IDENTITY"
+		string name "NOT NULL"
+		int min_age "NOT NULL"
+		int max_age "NOT NULL"
+	}
+
+	Registration {
+		int id PK "IDENTITY"
+		int player_id FK
+		int tournament_id FK
+	}
+
+	Tournament }|--o{ Category : Accepts
+	Player }o--o{ Tournament : "Registers via Registration"
+		
