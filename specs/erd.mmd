@@ -15,6 +15,13 @@ erDiagram
 		enum genre "MALE,FEMALE,OTHER"
 		enum role "ADMIN,PLAYER"
 	}
+	
+	WhitePlayer {}
+	
+	BlackPlayer {}
+
+	WhitePlayer ||..|| Player : is
+	BlackPlayer ||..|| Player : is
 
 	Tournament {
 		int id PK "IDENTITY"
@@ -25,7 +32,7 @@ erDiagram
 		int max_player "NOT NULL"
 		int min_elo "NOT NULL"
 		int max_elo "NOT NULL"
-		int round "NOT NULL"
+		int current_round "NOT NULL"
 		bool women_only "NOT NULL"
 		date registration_closing_date "NOT NULL"
 		date create_date "NOT NULL"
@@ -45,6 +52,16 @@ erDiagram
 		int tournament_id FK
 	}
 
+	Match {
+		int id PK "IDENTITY"
+		int round_order "NOT NULL"
+		enum result "PENDING,WHITES,BLACKS,PAT"
+	}
+
+
 	Tournament }|--o{ Category : Accepts
 	Player }o--o{ Tournament : "Registers via Registration"
 		
+	Match ||--o{ Tournament : "Belongs to"
+	Match ||--o{ WhitePlayer : "Plays"
+	Match ||--o{ BlackPlayer : "Plays"
