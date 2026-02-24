@@ -57,7 +57,7 @@
           toPackage = name: script: pkgs.writeShellScriptBin name script;
         in
 
-        pkgs.mkShellNoCC {
+        pkgs.mkShell {
 
           packages = with pkgs; [
             (lib.mapAttrsToList toPackage scripts)
@@ -93,6 +93,7 @@
             deno --version  | head -2 | tail -1
             echo -n "🦕 "
             deno --version  | head -3 | tail -1
+            echo  "🦕   - to populate the database with initial data: 'deno run initdb'"
             echo  "🦕   - to launch the server in dev mode: 'deno run dev'"
             echo  "🦕   - to add a npm package: 'deno install npm:package_name'"
             echo  "🦕   - to remove a npm package: 'deno remove npm:package_name'"

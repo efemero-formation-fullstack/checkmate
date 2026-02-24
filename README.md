@@ -2,8 +2,7 @@
 
 ## 🛠 WORK IN PROGRESS 🛠 
 
-This is not yet a real project, just a structure to be filled
-
+This is an API to organize chess tournaments.
 
 ## Technologies used
 
@@ -62,10 +61,16 @@ If needed, create a database user, and the database that will contain all the ap
 
 ## Launch the project
 
-Once you have all the dependencies, create a `.env` file and fill it with desired values. There is a `.env.example` file that can be used as a base. If you go the nix way, you can keep the values from the example file for the DB:
+Once you have all the dependencies, create a `.env` file and fill it with desired values. There is a `.env.example` file that can be used as a base. If you go the nix way, you can keep the values from the example file for the DB for the majority of the variables:
 ```sh
 cp .env.example .env
 ```
+If you want to use the fake data generated for the dev, you can populate the database with:
+```sh
+deno run initdb
+```
+It creates the admin player (MrCheckmate) and 1000 players with plausible data.
+
 
 Then you can launch the project:
 ```sh

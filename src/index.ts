@@ -6,6 +6,7 @@ import { AppDataSource } from "./data-source.ts";
 import router from "./routers/index.ts";
 import process from "node:process";
 import { STATUS_CODES } from "node:http";
+import morgan from "morgan";
 
 try {
   const ds = await AppDataSource.initialize();
@@ -14,6 +15,10 @@ try {
 }
 const app = express();
 const port = process.env.APP_PORT;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(morgan("dev"));
 
 app.use("/", router);
 app.use(express.static("public"));

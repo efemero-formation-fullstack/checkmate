@@ -1,8 +1,8 @@
 import { Router } from "express";
-import mate_router from "./mate.router.ts";
+import player_router from "./player.router.ts";
 
 const router = Router();
 
-router.use("/mate", mate_router);
+router.use("/player", player_router);
 
 export default router;
