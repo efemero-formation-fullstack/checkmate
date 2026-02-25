@@ -1,6 +1,5 @@
 import { hash } from "@bronti/argon2";
 import { buildMapper } from "dto-mapper";
-import console from "node:console";
 import {
   CreatePlayerDTO,
   GetPlayerDTO,
@@ -18,7 +17,6 @@ const player_controller = {
   create_player: async (req, resp) => {
     const create_dto = create_mapper.deserialize(req.data);
     const password = genpw();
-    console.log(password);
     create_dto.password = hash(password);
     const player = await Player.save(create_dto);
     const get_dto = get_mapper.serialize(player);
@@ -28,7 +26,6 @@ const player_controller = {
     const players: Player[] = await player_service.get_players();
     const dtos = [];
     for (const player of players) {
-      console.log(player.birth_date);
       dtos.push(get_mapper.serialize(player));
     }
     resp.status(200).json(dtos);
@@ -36,7 +33,8 @@ const player_controller = {
   get_player: async (req, resp) => {
     const player = await player_service.get_player(req.params.id);
     if (!player) {
-      resp.status(404).send();
+      resp.status(404).end();
+      return;
     }
     const dto = get_mapper.serialize(player);
     resp.status(200).json(dto);
@@ -55,7 +53,7 @@ const player_controller = {
   },
   delete_player: async (req, resp) => {
     Player.delete(req.params.id);
-    resp.status(200).send();
+    resp.status(200).end();
   },
 };
 

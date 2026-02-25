@@ -3,8 +3,11 @@ import { decodeToken, generateToken } from "../utils/jwt.ts";
 
 const auth_controller = {
   login: async (req, resp) => {
-    const player = await login("", "");
-    if (!player) resp.status(401).send();
+    const player = await login(req.data.login, req.data.password);
+    if (!player) {
+      resp.status(401).end();
+      return;
+    }
     const token = await generateToken(player);
     const decoded = await decodeToken(token);
     const result = {

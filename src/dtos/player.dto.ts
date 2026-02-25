@@ -32,7 +32,7 @@ export class GetPlayerDTO {
   @include()
   gender: Gender;
   @include()
-  @scope("admin")
+  @scope(PlayerRole.ADMIN)
   role: PlayerRole;
 }
 
@@ -49,6 +49,6 @@ export class UpdatePlayerDTO {
   @include()
   gender: Gender;
   @include()
-  @scope("admin")
+  @scope(PlayerRole.ADMIN)
   role: PlayerRole;
 }

@@ -1,4 +1,5 @@
 import { hash } from "@bronti/argon2";
+import bcrypt from "bcryptjs";
 import "dotenv/config";
 import console from "node:console";
 import process from "node:process";
@@ -46,6 +47,28 @@ try {
       player = Player.create(player);
       player = await em.save(player);
     }
+    const test_user = Player.create({
+      nickname: "test_player",
+      email: "just@yo.lo",
+      password: hash("test_password"),
+      elo: 400,
+      birth_date: "1980-02-22",
+      gender: Gender.MALE,
+      role: PlayerRole.PLAYER,
+    });
+    await em.save(test_user);
+    const salt = await bcrypt.genSalt();
+    const password_hash = await bcrypt.hash("test_password", salt);
+    const test_user2 = Player.create({
+      nickname: "test_player2",
+      email: "just2@yo.lo",
+      password: password_hash,
+      elo: 400,
+      birth_date: "1980-02-22",
+      gender: Gender.MALE,
+      role: PlayerRole.PLAYER,
+    });
+    await em.save(test_user2);
   });
 } catch (e) {
   console.log(e);
