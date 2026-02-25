@@ -1,4 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 
 export enum PlayerRole {
   ADMIN = "admin",
@@ -28,7 +35,7 @@ export class Player extends BaseEntity {
   @Column({ type: "int", default: 1200 })
   elo: number;
 
-  @Column()
+  @Column({ type: "date" })
   birth_date: Date;
 
   @Column({ type: "enum", enum: Gender })
@@ -36,4 +43,10 @@ export class Player extends BaseEntity {
 
   @Column({ type: "enum", enum: PlayerRole })
   role: PlayerRole;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }

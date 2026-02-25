@@ -1,0 +1,19 @@
+import { login } from "../utils/auth.ts";
+import { decodeToken, generateToken } from "../utils/jwt.ts";
+
+const auth_controller = {
+  login: async (req, resp) => {
+    const player = await login("", "");
+    if (!player) resp.status(401).send();
+    const token = await generateToken(player);
+    const decoded = await decodeToken(token);
+    const result = {
+      access_token: token,
+      token_type: "Bearer",
+      expires_in: decoded.exp - decoded.iat,
+    };
+    resp.status(200).json(result);
+  },
+};
+
+export default auth_controller;

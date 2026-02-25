@@ -1,3 +1,10 @@
+import { Player } from "../entities/index.ts";
+
+export function login(nickname: string, password: string): Player {
+  const player = await Player.findOneBy({ nickname });
+  return player;
+}
+
 export function genpw(length: number = 12): string {
   const char =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=";

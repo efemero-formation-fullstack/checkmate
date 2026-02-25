@@ -1,11 +1,11 @@
+import { hash } from "@bronti/argon2";
 import "dotenv/config";
+import console from "node:console";
 import process from "node:process";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Gender, Player, PlayerRole } from "../entities/index.ts";
 import players from "./checkmate_players.json" with { type: "json" };
-import { genpw } from "../utils/genpw.ts";
-import console from "node:console";
 
 const AppDataSource = new DataSource({
   type: "postgres",
@@ -31,7 +31,7 @@ try {
     const mr_checkmate = Player.create({
       nickname: "MrCheckmate",
       email: "chess_m@st.er",
-      password: process.env.ADMIN_PASSWORD,
+      password: hash(process.env.ADMIN_PASSWORD),
       elo: 2851,
       birth_date: "1963-04-13",
       gender: Gender.MALE,
@@ -42,7 +42,6 @@ try {
     // insert players from json (1000 players from https://mockaroo.com)
     let player;
     for (player of players) {
-      player.password = genpw();
       player.role = PlayerRole.PLAYER;
       player = Player.create(player);
       player = await em.save(player);

@@ -9,10 +9,13 @@
     "jsr:@denosaurs/lz4@0.1.4": "0.1.4",
     "jsr:@std/encoding@0.221": "0.221.0",
     "jsr:@std/encoding@^1.0.7": "1.0.10",
+    "npm:bcryptjs@^3.0.3": "3.0.3",
     "npm:dotenv@^17.3.1": "17.3.1",
+    "npm:dto-mapper@~0.2.3": "0.2.3_reflect-metadata@0.2.2",
     "npm:express@^5.2.1": "5.2.1",
     "npm:morgan@^1.10.1": "1.10.1",
     "npm:pg@^8.18.0": "8.18.0",
+    "npm:prettier-plugin-organize-imports@^4.3.0": "4.3.0_prettier@3.8.1_typescript@5.9.3",
     "npm:reflect-metadata@~0.2.2": "0.2.2",
     "npm:typeorm-naming-strategies@^4.1.0": "4.1.0_typeorm@0.3.28__pg@8.18.0_pg@8.18.0",
     "npm:typeorm@~0.3.28": "0.3.28_pg@8.18.0",
@@ -116,6 +119,10 @@
       "dependencies": [
         "safe-buffer@5.1.2"
       ]
+    },
+    "bcryptjs@3.0.3": {
+      "integrity": "sha512-GlF5wPWnSa/X5LKM1o0wz0suXIINz1iHRLvTS+sLyi7XPbe5ycmYI3DlZqVGZZtDgl4DmasFg7gOB3JYbphV5g==",
+      "bin": true
     },
     "body-parser@2.2.2": {
       "integrity": "sha512-oP5VkATKlNwcgvxi0vM0p/D3n2C3EReYVX+DNYs5TjZFn/oQt2j+4sVJtSMr18pdRr8wjTcBl6LoV+FUwzPmNA==",
@@ -241,6 +248,12 @@
     },
     "dotenv@17.3.1": {
       "integrity": "sha512-IO8C/dzEb6O3F9/twg6ZLXz164a2fhTnEWb95H23Dm4OuN+92NmEAlTrupP9VW6Jm3sO26tQlqyvyi4CsnY9GA=="
+    },
+    "dto-mapper@0.2.3_reflect-metadata@0.2.2": {
+      "integrity": "sha512-7yiqP8LWN+uqcRTTG/FeoSl2kH7G4GTJJ8hTpZmGOVifE4PeOUUszkIfPvgzK1osE1UZi6N4DbmlV6pMGCGd3Q==",
+      "dependencies": [
+        "reflect-metadata"
+      ]
     },
     "dunder-proto@1.0.1": {
       "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
@@ -626,6 +639,17 @@
         "xtend"
       ]
     },
+    "prettier-plugin-organize-imports@4.3.0_prettier@3.8.1_typescript@5.9.3": {
+      "integrity": "sha512-FxFz0qFhyBsGdIsb697f/EkvHzi5SZOhWAjxcx2dLt+Q532bAlhswcXGYB1yzjZ69kW8UoadFBw7TyNwlq96Iw==",
+      "dependencies": [
+        "prettier",
+        "typescript"
+      ]
+    },
+    "prettier@3.8.1": {
+      "integrity": "sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==",
+      "bin": true
+    },
     "proxy-addr@2.0.7": {
       "integrity": "sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==",
       "dependencies": [
@@ -870,6 +894,10 @@
       ],
       "bin": true
     },
+    "typescript@5.9.3": {
+      "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+      "bin": true
+    },
     "unpipe@1.0.0": {
       "integrity": "sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ=="
     },
@@ -948,10 +976,13 @@
       "jsr:@bronti/argon2@^1.0.3",
       "jsr:@cross/jwt@1",
       "jsr:@denosaurs/argontwo@0.2",
+      "npm:bcryptjs@^3.0.3",
       "npm:dotenv@^17.3.1",
+      "npm:dto-mapper@~0.2.3",
       "npm:express@^5.2.1",
       "npm:morgan@^1.10.1",
       "npm:pg@^8.18.0",
+      "npm:prettier-plugin-organize-imports@^4.3.0",
       "npm:reflect-metadata@~0.2.2",
       "npm:typeorm-naming-strategies@^4.1.0",
       "npm:typeorm@~0.3.28",

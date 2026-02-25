@@ -1,19 +1,23 @@
 {
   "tasks": {
     "dev": "deno run -A --watch src/index.ts",
-    "initdb": "deno run -A src/database/init.ts"
+    "resetdb": "deno run -A src/database/init.ts"
   },
   "imports": {
     "@bronti/argon2": "jsr:@bronti/argon2@^1.0.3",
     "@cross/jwt": "jsr:@cross/jwt@^1.0.0",
     "@denosaurs/argontwo": "jsr:@denosaurs/argontwo@^0.2.0",
+    "bcryptjs": "npm:bcryptjs@^3.0.3",
     "dotenv": "npm:dotenv@^17.3.1",
+    "dto-mapper": "npm:dto-mapper@^0.2.3",
     "express": "npm:express@^5.2.1",
     "morgan": "npm:morgan@^1.10.1",
     "pg": "npm:pg@^8.18.0",
+    "prettier-plugin-organize-imports": "npm:prettier-plugin-organize-imports@^4.3.0",
     "reflect-metadata": "npm:reflect-metadata@^0.2.2",
     "typeorm": "npm:typeorm@^0.3.28",
     "typeorm-naming-strategies": "npm:typeorm-naming-strategies@^4.1.0",
     "zod": "npm:zod@^4.3.6"
-  }
+  },
+  "nodeModulesDir": "auto"
 }

@@ -1,15 +1,13 @@
 import "dotenv/config";
 import express from "express";
+import morgan from "morgan";
 import console from "node:console";
-import path from "node:path";
+import process from "node:process";
 import { AppDataSource } from "./data-source.ts";
 import router from "./routers/index.ts";
-import process from "node:process";
-import { STATUS_CODES } from "node:http";
-import morgan from "morgan";
 
 try {
-  const ds = await AppDataSource.initialize();
+  await AppDataSource.initialize();
 } catch (e) {
   console.log(e);
 }

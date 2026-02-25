@@ -1,7 +1,7 @@
+import process from "node:process";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Player } from "./entities/index.ts";
-import process from "node:process";
 
 export const AppDataSource = new DataSource({
   type: "postgres",

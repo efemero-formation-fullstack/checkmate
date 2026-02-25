@@ -1,6 +1,6 @@
 # Checkmate
 
-## 🛠 WORK IN PROGRESS 🛠 
+## 🛠 WORK IN PROGRESS 🛠
 
 This is an API to organize chess tournaments.
 
@@ -18,9 +18,11 @@ This is an API to organize chess tournaments.
 For installing nix, I recommand [nix from determinate systems](https://docs.determinate.systems/).
 
 If you want to autoload the environment with direnv, once nix is installed:
+
 ```
 nix profile add nixpkgs#direnv
 ```
+
 And activate it for your shell according to [the doc](https://direnv.net/docs/hook.html).
 
 If you have nix with flakes installed on your system, you can just type `nix develop`.
@@ -28,17 +30,20 @@ If you have nix with flakes installed on your system, you can just type `nix dev
 If you have direnv installed on your system, just `cd` to the project directory, then on the first time type `direnv allow`, then when you `cd` in the directory, the development environment will automatically load.
 
 Once the development environment is loaded, you can initialize the DB, then start it:
+
 ```sh
 initdb
 startdb
 ```
 
 To stop the DB:
+
 ```sh
 stopdb
 ```
 
 The DB is contained into `.pg/`:
+
 - `.pg/data` -> all the data
 - `.pg/run` -> the socket
 - `.pg/log` -> the logs
@@ -62,17 +67,22 @@ If needed, create a database user, and the database that will contain all the ap
 ## Launch the project
 
 Once you have all the dependencies, create a `.env` file and fill it with desired values. There is a `.env.example` file that can be used as a base. If you go the nix way, you can keep the values from the example file for the DB for the majority of the variables:
+
 ```sh
 cp .env.example .env
 ```
-If you want to use the fake data generated for the dev, you can populate the database with:
-```sh
-deno run initdb
-```
-It creates the admin player (MrCheckmate) and 1000 players with plausible data.
 
+If you want to use the fake data generated for the dev, you can erase all data and populate the database with:
+
+```sh
+deno run resetdb
+```
+
+It will first delete all data from the tables, deleta all the tables and types defined by typeorm,
+and creates the admin player (MrCheckmate) and 1000 players with plausible data.
 
 Then you can launch the project:
+
 ```sh
 deno run dev
 ```
