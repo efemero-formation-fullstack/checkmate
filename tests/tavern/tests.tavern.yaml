@@ -1,0 +1,71 @@
+test_name: Get a player
+
+stages:
+  - name: login_player
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        login: test_player
+        password: test_password
+      method: POST
+    response:
+      status_code: 200
+      save:
+        json:
+          test_player_token: access_token
+
+  - name: login_admin
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        login: MrCheckmate
+        password: ca|a4aeSh4ai
+      method: POST
+    response:
+      status_code: 200
+      save:
+        json:
+          test_admin_token: access_token
+
+  - name: cannot get user if not connected
+    request:
+      url: http://localhost:8080/player/200
+      method: GET
+    response:
+      status_code: 401
+
+  - name: cannot get user if not admin or self
+    request:
+      url: http://localhost:8080/player/200
+      method: GET
+      headers:
+        Authorization: "bearer {test_player_token:s}"
+    response:
+      status_code: 403
+
+  - name: get user as self
+    request:
+      url: http://localhost:8080/player/1002
+      method: GET
+      headers:
+        Authorization: "bearer {test_player_token:s}"
+    response:
+      status_code: 200
+
+  - name: get user as admin
+    request:
+      url: http://localhost:8080/player/1002
+      method: GET
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+    response:
+      status_code: 200
+
+  - name: get user as admin and self
+    request:
+      url: http://localhost:8080/player/1
+      method: GET
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+    response:
+      status_code: 200

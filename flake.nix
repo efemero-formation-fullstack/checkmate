@@ -32,6 +32,9 @@
           };
           scripts = {
             # define custom script commands here
+            tavern-ci = ''
+              uvx --with allure-pytest --from tavern tavern-ci --alluredir=tests/allure-results $@ && npx allure generate
+            '';
             startdb = ''
               pg_ctl -D .pg/data -l .pg/log/logs -o "-k `pwd`/.pg/run" -o "-p $PGPORT" start
             '';
@@ -66,9 +69,13 @@
             caseconv
             prek
             prettier
+            uv
+            nodejs
           ];
 
           shellHook = ''
+            deno x --install-alias
+            alias tavern-ci="uvx run tavern-ci"
             # Define your project name here
             export PROJECT_NAME="Checkmate"
 

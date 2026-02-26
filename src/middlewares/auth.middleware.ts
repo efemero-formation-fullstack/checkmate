@@ -9,10 +9,7 @@ export async function authorization_token(req, resp, next) {
     const [bearer, token] = bearerToken.split(" ");
 
     if (bearer.toLowerCase() !== "bearer") {
-      throw createError(
-        403,
-        "use a 'Bearer' token in the 'Authorization' headear",
-      );
+      next(createError(403, "not a 'Bearer' token"));
     }
 
     try {
@@ -22,7 +19,8 @@ export async function authorization_token(req, resp, next) {
         role: decoded.role,
       };
     } catch (err) {
-      throw createError(401, "invalid token");
+      if (!err.statusCode) next(createError(401, "invalid token"));
+      next(err);
     }
   }
 
@@ -65,10 +63,11 @@ export function self_or_roles(roles: PlayerRole[] = []) {
       throw createError(401);
     }
     // connected, but not self -> check the role
-    if (req.user.id !== req.params.id && !roles.includes(req.user.role)) {
+    if (req.user.id != req.params.id && !roles.includes(req.user.role)) {
+      console.log(req.user.id, req.params.id);
       throw createError(
         403,
-        `You are not the player ${req.user.id} or ${roles.join(" or ")}.`,
+        `You are not the player ${req.params.id} or ${roles.join(" or ")}.`,
       );
     }
 

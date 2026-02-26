@@ -1,4 +1,5 @@
 import { signJWT, validateJWT } from "@cross/jwt";
+import createError from "http-errors";
 import console from "node:console";
 import process from "node:process";
 import { Player } from "../entities/index.ts";
@@ -19,5 +20,10 @@ export async function generateToken(player: Player) {
 }
 
 export async function decodeToken(token) {
-  return await validateJWT(token, process.env.JWT_SECRET);
+  const payload = await validateJWT(token, process.env.JWT_SECRET);
+  const outdated = payload.exp * 1000 < Date.now();
+  if (outdated) {
+    throw createError(401, "outdated token");
+  }
+  return payload;
 }

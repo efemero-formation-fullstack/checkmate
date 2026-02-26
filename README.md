@@ -79,7 +79,7 @@ deno run resetdb
 ```
 
 It will first delete all data from the tables, deleta all the tables and types defined by typeorm,
-and creates the admin player (MrCheckmate), 2 test users (one player, one admin), and 1000 players with plausible data.
+and creates the admin player (MrCheckmate), 2 test users (one with argon2 encrypted password, one with bcrypt encrypted password), and 1000 players with plausible data.
 
 Then you can launch the project:
 
