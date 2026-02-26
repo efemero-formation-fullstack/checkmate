@@ -13,6 +13,8 @@
     "express": "npm:express@^5.2.1",
     "http-errors": "npm:http-errors@^2.0.1",
     "morgan": "npm:morgan@^1.10.1",
+    "nodemailer": "npm:nodemailer@^8.0.1",
+    "nunjucks": "npm:nunjucks@^3.2.4",
     "pg": "npm:pg@^8.18.0",
     "prettier-plugin-jinja-template": "npm:prettier-plugin-jinja-template@^2.1.0",
     "prettier-plugin-organize-imports": "npm:prettier-plugin-organize-imports@^4.3.0",

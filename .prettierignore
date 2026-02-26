@@ -13,3 +13,4 @@ design/
 *.lock
 .prettierignore
 .gitignore
+*.txt.njk

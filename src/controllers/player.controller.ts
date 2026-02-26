@@ -7,6 +7,7 @@ import {
   UpdatePlayerDTO,
 } from "../dtos/player.dto.ts";
 import { Player } from "../entities/index.ts";
+import { send_template } from "../services/mailer.service.ts";
 import player_service from "../services/player.service.ts";
 import { genpw } from "../utils/auth.ts";
 
@@ -20,6 +21,12 @@ const player_controller = {
     const password = genpw();
     create_dto.password = hash(password);
     const player = await Player.save(create_dto);
+    send_template(
+      player.email,
+      "[Checkmate ♟️] compte créé",
+      "player_created_password_email",
+      { nickname: player.nickname, password },
+    );
     const get_dto = get_mapper.serialize(player);
     resp.status(201).json(get_dto);
   },

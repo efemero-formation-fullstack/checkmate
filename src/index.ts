@@ -3,6 +3,7 @@ import express from "express";
 import morgan from "morgan";
 import console from "node:console";
 import process from "node:process";
+import nunjucks from "nunjucks";
 import { AppDataSource } from "./data-source.ts";
 import { errorHandler } from "./middlewares/error.middleware.ts";
 import router from "./routers/index.ts";
@@ -14,6 +15,10 @@ try {
 }
 const app = express();
 const port = process.env.APP_PORT;
+
+nunjucks.configure("src/templates", {
+  autoescape: true,
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

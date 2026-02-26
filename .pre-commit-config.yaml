@@ -17,4 +17,4 @@ repos:
         name: run prettier
         language: system
         files: ^.*$
-        entry: prettier --write --plugin=prettier-plugin-organize-imports
+        entry: prettier --write
