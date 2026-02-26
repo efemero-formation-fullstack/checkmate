@@ -1,3 +1,4 @@
+import createError from "http-errors";
 import { login } from "../utils/auth.ts";
 import { decodeToken, generateToken } from "../utils/jwt.ts";
 
@@ -5,8 +6,7 @@ const auth_controller = {
   login: async (req, resp) => {
     const player = await login(req.data.login, req.data.password);
     if (!player) {
-      resp.status(401).end();
-      return;
+      throw createError(401, "login failed");
     }
     const token = await generateToken(player);
     const decoded = await decodeToken(token);

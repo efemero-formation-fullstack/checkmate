@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+.env
+design/
+.direnv/
+.pg/
+*.pdf
+*.png
+*.lock
+.prettierignore
+.gitignore

@@ -10,13 +10,17 @@ export async function login(login: string, password: string): Promise<Player> {
     { nickname: login },
     { email: login },
   ]);
+  // login does not correspond to any player in the DB
   if (!player) return null;
+
+  // verify the password using argon2
   if (!verifyArgon2(password, player.password)) {
-    // test bcrypt
+    // if this is not argon2, test bcrypt
     if (!verifyBcrypt(password, player.password)) {
+      // not bcrypt valid, nor argon2 -> bad password
       return null;
     }
-    // re-hash with argon2
+    // bcrypt valid -> re-hash with argon2 and save
     player.password = hash(password);
     await player.save();
   }
@@ -24,6 +28,9 @@ export async function login(login: string, password: string): Promise<Player> {
   return player;
 }
 
+// Verify a password against a hash using argon2.
+// Return false if it don't match, or if the hash is not a valid argon2 hash.
+// We loose the distinction here to simplify the call.
 function verifyArgon2(password, hash): boolean {
   try {
     if (!verify(password, hash)) {
@@ -35,6 +42,9 @@ function verifyArgon2(password, hash): boolean {
   return true;
 }
 
+// Verify a password against a hash using bcrypt.
+// Return false if it don't match, or if the hash is not a valid bcrypt hash.
+// We loose the distinction here to simplify the call.
 function verifyBcrypt(password, hash): boolean {
   try {
     if (!bcrypt.compareSync(password, hash)) {

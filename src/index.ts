@@ -4,6 +4,7 @@ import morgan from "morgan";
 import console from "node:console";
 import process from "node:process";
 import { AppDataSource } from "./data-source.ts";
+import { errorHandler } from "./middlewares/error.middleware.ts";
 import router from "./routers/index.ts";
 
 try {
@@ -20,6 +21,7 @@ app.use(morgan("dev"));
 
 app.use("/", router);
 app.use(express.static("public"));
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);

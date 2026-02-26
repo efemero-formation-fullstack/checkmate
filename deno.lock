@@ -13,8 +13,10 @@
     "npm:dotenv@^17.3.1": "17.3.1",
     "npm:dto-mapper@~0.2.3": "0.2.3_reflect-metadata@0.2.2",
     "npm:express@^5.2.1": "5.2.1",
+    "npm:http-errors@^2.0.1": "2.0.1",
     "npm:morgan@^1.10.1": "1.10.1",
     "npm:pg@^8.18.0": "8.18.0",
+    "npm:prettier-plugin-jinja-template@^2.1.0": "2.1.0_prettier@3.8.1",
     "npm:prettier-plugin-organize-imports@^4.3.0": "4.3.0_prettier@3.8.1_typescript@5.9.3",
     "npm:reflect-metadata@~0.2.2": "0.2.2",
     "npm:typeorm-naming-strategies@^4.1.0": "4.1.0_typeorm@0.3.28__pg@8.18.0_pg@8.18.0",
@@ -639,6 +641,12 @@
         "xtend"
       ]
     },
+    "prettier-plugin-jinja-template@2.1.0_prettier@3.8.1": {
+      "integrity": "sha512-mzoCp2Oy9BDSug80fw3B3J4n4KQj1hRvoQOL1akqcDKBb5nvYxrik9zUEDs4AEJ6nK7QDTGoH0y9rx7AlnQ78Q==",
+      "dependencies": [
+        "prettier"
+      ]
+    },
     "prettier-plugin-organize-imports@4.3.0_prettier@3.8.1_typescript@5.9.3": {
       "integrity": "sha512-FxFz0qFhyBsGdIsb697f/EkvHzi5SZOhWAjxcx2dLt+Q532bAlhswcXGYB1yzjZ69kW8UoadFBw7TyNwlq96Iw==",
       "dependencies": [
@@ -980,8 +988,10 @@
       "npm:dotenv@^17.3.1",
       "npm:dto-mapper@~0.2.3",
       "npm:express@^5.2.1",
+      "npm:http-errors@^2.0.1",
       "npm:morgan@^1.10.1",
       "npm:pg@^8.18.0",
+      "npm:prettier-plugin-jinja-template@^2.1.0",
       "npm:prettier-plugin-organize-imports@^4.3.0",
       "npm:reflect-metadata@~0.2.2",
       "npm:typeorm-naming-strategies@^4.1.0",

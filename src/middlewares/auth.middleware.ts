@@ -1,3 +1,4 @@
+import createError from "http-errors";
 import { PlayerRole } from "../entities/index.ts";
 import { decodeToken } from "../utils/jwt.ts";
 
@@ -8,8 +9,10 @@ export async function authorization_token(req, resp, next) {
     const [bearer, token] = bearerToken.split(" ");
 
     if (bearer.toLowerCase() !== "bearer") {
-      resp.status(403).end();
-      return;
+      throw createError(
+        403,
+        "use a 'Bearer' token in the 'Authorization' headear",
+      );
     }
 
     try {
@@ -19,8 +22,7 @@ export async function authorization_token(req, resp, next) {
         role: decoded.role,
       };
     } catch (err) {
-      resp.status(401).end();
-      return;
+      throw createError(401, "invalid token");
     }
   }
 
@@ -33,18 +35,15 @@ export function connected_with_role(roles: PlayerRole[] = []) {
   return (req, resp, next) => {
     // no role defined, forbidden for all
     if (!roles.length) {
-      resp.status(403).end();
-      return;
+      throw createError(403, "Nobody can access this endpoint.");
     }
     if (!req.user) {
       // not connected
-      resp.status(401).end();
-      return;
+      throw createError(401);
     }
     // connected, but not the good role
     if (roles.length > 0 && !roles.includes(req.user.role)) {
-      resp.status(403).end();
-      return;
+      throw createError(403, `You are not ${roles.join(" or ")}.`);
     }
 
     next();
@@ -57,15 +56,20 @@ export function connected_with_role(roles: PlayerRole[] = []) {
 // If no role is defined -> forbidden for all except self
 export function self_or_roles(roles: PlayerRole[] = []) {
   return (req, resp, next) => {
+    // no role defined, forbidden for all
+    if (!roles.length) {
+      throw createError(403, "Nobody can access this endpoint.");
+    }
     // not connected
     if (!req.user) {
-      resp.status(401).end();
-      return;
+      throw createError(401);
     }
     // connected, but not self -> check the role
-    if (req.user.id != req.params.id && !roles.includes(req.user.role)) {
-      resp.status(403).end();
-      return;
+    if (req.user.id !== req.params.id && !roles.includes(req.user.role)) {
+      throw createError(
+        403,
+        `You are not the player ${req.user.id} or ${roles.join(" or ")}.`,
+      );
     }
 
     next();

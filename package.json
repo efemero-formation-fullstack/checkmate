@@ -1,5 +1,0 @@
-{
-  "scripts": {
-    "fix:prettier": "prettier --write --plugin=prettier-plugin-organize-imports"
-  }
-}

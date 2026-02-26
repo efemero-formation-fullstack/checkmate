@@ -1,5 +1,6 @@
 import { hash } from "@bronti/argon2";
 import { buildMapper } from "dto-mapper";
+import createError from "http-errors";
 import {
   CreatePlayerDTO,
   GetPlayerDTO,
@@ -33,8 +34,7 @@ const player_controller = {
   get_player: async (req, resp) => {
     const player = await player_service.get_player(req.params.id);
     if (!player) {
-      resp.status(404).end();
-      return;
+      throw createError(404);
     }
     const dto = get_mapper.serialize(player);
     resp.status(200).json(dto);

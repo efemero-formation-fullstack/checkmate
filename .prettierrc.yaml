@@ -1,2 +1,8 @@
 plugins:
   - prettier-plugin-organize-imports
+  - prettier-plugin-jinja-template
+overrides:
+  - files:
+      - "*.njk"
+    options:
+      parser: jinja-template
