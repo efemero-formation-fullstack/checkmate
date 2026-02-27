@@ -1,0 +1,64 @@
+name: Run API tests and generate report, and deploy it on github-pages
+on:
+  - push
+
+jobs:
+  build:
+    name: Build all the needed artifacts
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install nix with some cache
+      - name: Install Nix (upstream)
+        uses: cachix/install-nix-action@v31.6.2
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            eval-cache = true
+            extra-substituters = https://nix-community.cachix.org https://cache.garnix.io
+            extra-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= cache.garnix.io-1:CTFPyKSLcx3t+q56Ns4kq7YEZc8WSfbVwqy1Y3hj4W8=
+
+      - name: Vendoring dependencies
+        run: |
+          nix develop -c deno install
+          nix develop -c deno cache --vendor --lock=deno.lock src/index.ts src/database/init.ts
+
+      - name: Add vendor to git stage
+        run: git add -N node_modules/ vendor/ -f
+
+      - name: Generate API test report
+        run: nix build
+
+      - name: Upload report
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./result/public
+
+      - name: Deploy report as github pages
+        id: report-ghpages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./result/public
+
+  deploy-gh-pages:
+    permissions:
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+permissions:
+  contents: write
+  actions: read

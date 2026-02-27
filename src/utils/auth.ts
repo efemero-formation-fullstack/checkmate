@@ -10,6 +10,7 @@ export async function login(login: string, password: string): Promise<Player> {
     { nickname: login },
     { email: login },
   ]);
+  console.log(login, password, player);
   // login does not correspond to any player in the DB
   if (!player) return null;
 

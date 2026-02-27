@@ -1,13 +1,13 @@
 {
   "tasks": {
     "dev": "deno run -A --watch src/index.ts",
+    "once": "deno run -A src/index.ts",
     "resetdb": "deno run -A src/database/init.ts"
   },
   "imports": {
     "@bronti/argon2": "jsr:@bronti/argon2@^1.0.3",
     "@cross/jwt": "jsr:@cross/jwt@^1.0.0",
-    "@denosaurs/argontwo": "jsr:@denosaurs/argontwo@^0.2.0",
-    "allure": "npm:allure@^3.2.0",
+    "allure": "npm:allure@^3.3.1",
     "bcryptjs": "npm:bcryptjs@^3.0.3",
     "dotenv": "npm:dotenv@^17.3.1",
     "dto-mapper": "npm:dto-mapper@^0.2.3",
@@ -24,5 +24,6 @@
     "typeorm-naming-strategies": "npm:typeorm-naming-strategies@^4.1.0",
     "zod": "npm:zod@^4.3.6"
   },
-  "nodeModulesDir": "auto"
+  "nodeModulesDir": "manual",
+  "vendor": true
 }

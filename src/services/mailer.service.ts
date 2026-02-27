@@ -1,3 +1,4 @@
+import console from "node:console";
 import process from "node:process";
 import nodemailer from "nodemailer";
 import nunjucks from "nunjucks";
@@ -19,13 +20,16 @@ export async function send_template(receiver, subject, template_name, data) {
 }
 
 export async function send_email(receiver, subject, text_body, html_body) {
-  const info = await transporter.sendMail({
-    from: "no-reply@checkmate.chess",
-    to: receiver,
-    subject: subject,
-    text: text_body,
-    html: html_body,
-  });
-
-  console.log(info);
+  if (process.env.SMTP_DISABLE != "true") {
+    const info = await transporter.sendMail({
+      from: "no-reply@checkmate.chess",
+      to: receiver,
+      subject: subject,
+      text: text_body,
+      html: html_body,
+    });
+    console.log(info);
+  } else {
+    console.log(`sending email ${subject} to ${receiver}`);
+  }
 }

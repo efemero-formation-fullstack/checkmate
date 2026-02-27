@@ -1,14 +1,17 @@
 .idea/
 .vscode/
 node_modules/
+vendor/
 build/
 tmp/
 temp/
 .env
 design/
+.cache/
 .direnv/
 .pg/
 *.pdf
 *.png
 allure-report/
 allure-results/
+result
