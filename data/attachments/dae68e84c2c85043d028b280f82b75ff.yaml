@@ -1,0 +1,12 @@
+- name: login_player
+  request:
+    url: http://localhost:8080/auth/login
+    data:
+      login: test_player
+      password: test_password
+    method: POST
+  response:
+    status_code: 200
+    save:
+      json:
+        test_player_token: access_token
