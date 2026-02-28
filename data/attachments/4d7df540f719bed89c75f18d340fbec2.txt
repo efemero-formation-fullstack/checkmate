@@ -1,0 +1,21 @@
+[32mINFO    [0m tavern._core.run:run.py:177 Running test : Test of the auth/login endpoint
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login without login field must fail
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [400]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login without password field must fail
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [400]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login with inexistant login must fail
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [401]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login as admin with a bad password must fail
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [401]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login as player with a bad password must fail
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [401]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login as player
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login as admin
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login as player
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login as admin
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Login with additional fields
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'

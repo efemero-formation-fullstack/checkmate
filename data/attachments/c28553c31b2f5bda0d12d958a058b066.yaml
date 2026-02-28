@@ -1,9 +1,0 @@
-- name: login_player_bad_password_must_fail
-  request:
-    url: http://localhost:8080/auth/login
-    data:
-      login: test_player
-      password: not_the_password
-    method: POST
-  response:
-    status_code: 401

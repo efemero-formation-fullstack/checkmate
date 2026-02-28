@@ -1,9 +1,0 @@
-[32mINFO    [0m tavern._core.run:run.py:177 Running test : LOGIN
-[32mINFO    [0m tavern._core.run:run.py:370 Running stage : login_admin_bad_password_must_fail
-[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [401]>'
-[32mINFO    [0m tavern._core.run:run.py:370 Running stage : login_player_bad_password_must_fail
-[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [401]>'
-[32mINFO    [0m tavern._core.run:run.py:370 Running stage : login_player
-[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
-[32mINFO    [0m tavern._core.run:run.py:370 Running stage : login_admin
-[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'

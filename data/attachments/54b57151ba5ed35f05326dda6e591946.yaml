@@ -1,0 +1,6 @@
+allow_redirects: false
+data:
+  password: anything
+headers: {}
+method: POST
+url: http://localhost:8080/auth/login

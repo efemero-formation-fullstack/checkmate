@@ -1,0 +1,8 @@
+- name: Login without login field must fail
+  request:
+    url: http://localhost:8080/auth/login
+    data:
+      password: anything
+    method: POST
+  response:
+    status_code: 400

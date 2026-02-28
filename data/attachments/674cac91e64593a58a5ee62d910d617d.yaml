@@ -1,8 +1,0 @@
-- name: cannot get user if not admin or self
-  request:
-    url: http://localhost:8080/player/200
-    method: GET
-    headers:
-      Authorization: "bearer {test_player_token:s}"
-  response:
-    status_code: 403

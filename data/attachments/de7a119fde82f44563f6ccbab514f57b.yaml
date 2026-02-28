@@ -1,0 +1,10 @@
+- name: Login with additional fields
+  request:
+    url: http://localhost:8080/auth/login
+    data:
+      login: test_player
+      password: test_password
+      other: anything
+    method: POST
+  response:
+    status_code: 200

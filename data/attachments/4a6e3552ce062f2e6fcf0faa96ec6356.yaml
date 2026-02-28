@@ -1,0 +1,9 @@
+- name: Login as admin with a bad password must fail
+  request:
+    url: http://localhost:8080/auth/login
+    data:
+      login: MrCheckmate
+      password: not_the_password
+    method: POST
+  response:
+    status_code: 401
