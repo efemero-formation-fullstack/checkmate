@@ -1,15 +1,15 @@
 body:
-  birth_date: '1963-04-13'
-  elo: 2851
-  email: chess_m@st.er
+  birth_date: '1980-02-22'
+  elo: 400
+  email: just@yo.lo
   gender: male
-  id: 1
-  nickname: MrCheckmate
+  id: 1002
+  nickname: test_player
 headers:
   content-encoding: gzip
   content-type: application/json; charset=utf-8
-  date: Sat, 28 Feb 2026 09:59:14 GMT
-  etag: W/"6e-7K7AnEvJKUvoUo+brcF9yRNOPTo"
+  date: Sat, 28 Feb 2026 19:03:29 GMT
+  etag: W/"6d-yqOitVpDqKncnm5eEzyXgN1BQ5c"
   transfer-encoding: chunked
   vary: Accept-Encoding
   x-powered-by: Express

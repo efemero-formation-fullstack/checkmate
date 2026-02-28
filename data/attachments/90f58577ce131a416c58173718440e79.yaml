@@ -1,14 +1,14 @@
 body:
-  message: login failed
-  statusCode: 401
-  succes: false
+  errors:
+    login:
+    - 'Invalid input: expected string, received undefined'
 headers:
   content-encoding: gzip
   content-type: application/json; charset=utf-8
-  date: Sat, 28 Feb 2026 09:59:14 GMT
-  etag: W/"3a-cmctaPE3MTL/9ZTbmq4UxiqZEPA"
+  date: Sat, 28 Feb 2026 19:03:29 GMT
+  etag: W/"4b-Fgh3Aw5YXb1hBllF5zl6homdLLQ"
   transfer-encoding: chunked
   vary: Accept-Encoding
   x-powered-by: Express
 redirect_query_params: {}
-status_code: 401
+status_code: 400
