@@ -119,7 +119,7 @@
           '';
         };
 
-        # derivation to build the checkmate_api 'binary' of more than 200mb
+        # derivation to build the giant checkmate_api 'binary' (more than 200mb)
         packages.checkmate_api = pkgs.stdenv.mkDerivation {
           name = "checkmate_api";
           inherit system nativeBuildInputs;
@@ -138,7 +138,7 @@
           '';
         };
 
-        # derivation to build the reset_db 'binary' of more than 200mb
+        # derivation to build the giant reset_db 'binary' (more than 200mb)
         packages.reset_db = pkgs.stdenv.mkDerivation {
           name = "reset_db";
           inherit system nativeBuildInputs;
