@@ -1,7 +1,35 @@
-test_name: LOGIN
+test_name: Test of the auth/login endpoint
 
 stages:
-  - name: login_admin_bad_password_must_fail
+  - name: Login without login field must fail
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        password: anything
+      method: POST
+    response:
+      status_code: 400
+
+  - name: Login without password field must fail
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        password: anything
+      method: POST
+    response:
+      status_code: 400
+
+  - name: Login with inexistant login must fail
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        login: inexistant_login
+        password: test_password
+      method: POST
+    response:
+      status_code: 401
+
+  - name: Login as admin with a bad password must fail
     request:
       url: http://localhost:8080/auth/login
       data:
@@ -11,7 +39,7 @@ stages:
     response:
       status_code: 401
 
-  - name: login_player_bad_password_must_fail
+  - name: Login as player with a bad password must fail
     request:
       url: http://localhost:8080/auth/login
       data:
@@ -21,7 +49,7 @@ stages:
     response:
       status_code: 401
 
-  - name: login_player
+  - name: Login as player
     request:
       url: http://localhost:8080/auth/login
       data:
@@ -31,12 +59,42 @@ stages:
     response:
       status_code: 200
 
-  - name: login_admin
+  - name: Login as admin
     request:
       url: http://localhost:8080/auth/login
       data:
         login: MrCheckmate
         password: SUPER_SECRET_PASSWORD
+      method: POST
+    response:
+      status_code: 200
+  - name: Login as player
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        login: test_player
+        password: test_password
+      method: POST
+    response:
+      status_code: 200
+
+  - name: Login as admin
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        login: MrCheckmate
+        password: SUPER_SECRET_PASSWORD
+      method: POST
+    response:
+      status_code: 200
+
+  - name: Login with additional fields
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        login: test_player
+        password: test_password
+        other: anything
       method: POST
     response:
       status_code: 200
