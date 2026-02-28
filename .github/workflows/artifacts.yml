@@ -57,8 +57,8 @@ jobs:
       - name: Upload binary artifact
         uses: actions/upload-artifact@v4
         with:
-          name: checkmate_api
-          path: checkmate_api
+          name: result/bin/checkmate_api
+          path: result/bin/checkmate_api
 
   deploy-api:
     name: Deploy API to personal server
