@@ -23,8 +23,8 @@ test:
     initdb ; \
     startdb ; \
     deno run -A src/index.ts --lock-file --vendor --cached-only --node-modules-dir=manual 2>&1 > /dev/null & \
-    deno run -A src/database/init.ts --lock-file --vendor --cached-only --node-modules-dir=manual ; \
     DENO_PID=$! ; \
+    deno run -A src/database/init.ts --lock-file --vendor --cached-only --node-modules-dir=manual ; \
     sleep 1 ; \
     tavern-ci --alluredir=tests/allure-results tests/tavern/*.tavern.yaml || : ; \
     allure --version ; \
