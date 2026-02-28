@@ -1,14 +1,14 @@
 body:
-  errors:
-    login:
-    - 'Invalid input: expected string, received undefined'
+  message: You are not the player 200 or admin.
+  statusCode: 403
+  succes: false
 headers:
   content-encoding: gzip
   content-type: application/json; charset=utf-8
-  date: Sat, 28 Feb 2026 19:37:36 GMT
-  etag: W/"4b-Fgh3Aw5YXb1hBllF5zl6homdLLQ"
+  date: Sat, 28 Feb 2026 19:42:57 GMT
+  etag: W/"52-YUgsiWYVMX41oovq3rVnP+T74mo"
   transfer-encoding: chunked
   vary: Accept-Encoding
   x-powered-by: Express
 redirect_query_params: {}
-status_code: 400
+status_code: 403
