@@ -1,7 +1,6 @@
 {
   "tasks": {
     "dev": "deno run -A --watch src/index.ts",
-    "once": "deno run -A src/index.ts",
     "resetdb": "deno run -A src/database/init.ts"
   },
   "imports": {

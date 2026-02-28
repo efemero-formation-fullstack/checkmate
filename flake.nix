@@ -111,9 +111,51 @@
             export DENO_DIR=$PWD/.cache/deno
             cp .env.example .env
 
-            just build
+            just build-test-report
+          '';
+          installPhase = ''
+            mkdir -p $out
+            mv allure-report $out/public
           '';
         };
+
+        # derivation to build the checkmate_api 'binary' of more than 200mb
+        packages.checkmate_api = pkgs.stdenv.mkDerivation {
+          name = "checkmate_api";
+          inherit system nativeBuildInputs;
+          src = ./.;
+          buildInputs = nativeBuildInputs;
+          dontStrip = true;
+          dontPatchELF = true;
+          buildPhase = ''
+            export DENO_DIR=$PWD/.cache/deno
+            deno compile -A --vendor --lock=deno.lock --cached-only --no-check --output checkmate_api src/index.ts
+          '';
+
+          installPhase = ''
+            mkdir -p $out/bin
+            cp checkmate_api $out/bin/
+          '';
+        };
+
+        # derivation to build the reset_db 'binary' of more than 200mb
+        packages.reset_db = pkgs.stdenv.mkDerivation {
+          name = "reset_db";
+          inherit system nativeBuildInputs;
+          src = ./.;
+          buildInputs = nativeBuildInputs;
+          dontStrip = true;
+          dontPatchELF = true;
+          buildPhase = ''
+            export DENO_DIR=$PWD/.cache/deno
+            deno compile -A --vendor --lock=deno.lock --cached-only --no-check --output reset_db src/database/init.ts
+          '';
+          installPhase = ''
+            mkdir -p $out/bin
+            cp reset_db $out/bin/
+          '';
+        };
+
         devShells.default = pkgs.mkShell {
 
           inherit system nativeBuildInputs;
