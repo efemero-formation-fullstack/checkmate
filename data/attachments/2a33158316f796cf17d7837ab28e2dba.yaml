@@ -1,0 +1,17 @@
+body:
+  birth_date: '1963-04-13'
+  elo: 2851
+  email: chess_m@st.er
+  gender: male
+  id: 1
+  nickname: MrCheckmate
+headers:
+  content-encoding: gzip
+  content-type: application/json; charset=utf-8
+  date: Sat, 28 Feb 2026 20:05:59 GMT
+  etag: W/"6e-7K7AnEvJKUvoUo+brcF9yRNOPTo"
+  transfer-encoding: chunked
+  vary: Accept-Encoding
+  x-powered-by: Express
+redirect_query_params: {}
+status_code: 200

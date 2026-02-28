@@ -1,0 +1,17 @@
+body:
+  birth_date: '1980-02-22'
+  elo: 400
+  email: just@yo.lo
+  gender: male
+  id: 1002
+  nickname: test_player
+headers:
+  content-encoding: gzip
+  content-type: application/json; charset=utf-8
+  date: Sat, 28 Feb 2026 20:05:59 GMT
+  etag: W/"6d-yqOitVpDqKncnm5eEzyXgN1BQ5c"
+  transfer-encoding: chunked
+  vary: Accept-Encoding
+  x-powered-by: Express
+redirect_query_params: {}
+status_code: 200

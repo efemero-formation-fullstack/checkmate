@@ -1,0 +1,7 @@
+allow_redirects: false
+data:
+  login: MrCheckmate
+  password: not_the_password
+headers: {}
+method: POST
+url: http://localhost:8080/auth/login
