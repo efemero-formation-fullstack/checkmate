@@ -1,0 +1,14 @@
+body:
+  access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzcyMzE1MTg4LCJpYXQiOjE3NzIzMDc5ODh9.tH0kqkEo3hsKCRsBnKnTQVDyeWSsJta_DyfCJmFVa7Q
+  expires_in: 7200
+  token_type: Bearer
+headers:
+  content-encoding: gzip
+  content-type: application/json; charset=utf-8
+  date: Sat, 28 Feb 2026 19:46:27 GMT
+  etag: W/"d8-jTSm6obSo20jBVo8sC3wKos7/P4"
+  transfer-encoding: chunked
+  vary: Accept-Encoding
+  x-powered-by: Express
+redirect_query_params: {}
+status_code: 200
