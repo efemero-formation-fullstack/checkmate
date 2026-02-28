@@ -1,0 +1,25 @@
+Format variables:
+
+Source test stage (line 3):
+  - name: Login without login field must fail
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        password: anything
+      method: POST
+    response:
+      status_code: 400
+
+
+Formatted stage:
+  name: Login without login field must fail
+  request:
+    data:
+      password: anything
+    method: POST
+    url: http://localhost:8080/auth/login
+  response:
+    status_code: 400
+
+Errors:
+E   tavern._core.exceptions.RestRequestException

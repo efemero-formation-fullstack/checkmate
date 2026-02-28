@@ -1,7 +1,0 @@
-allow_redirects: false
-data:
-  login: inexistant_login
-  password: test_password
-headers: {}
-method: POST
-url: http://localhost:8080/auth/login

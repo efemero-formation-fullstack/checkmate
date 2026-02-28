@@ -1,0 +1,91 @@
+[32mINFO    [0m tavern._core.run:run.py:177 Running test : Test of the /player/:id endpoint
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Get a player JWT
+[31m[1mERROR   [0m tavern._plugins.rest.request:request.py:507 Error running prepared request
+Traceback (most recent call last):
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "/nix/store/slhpx9glq7vl99bwi93bgrhn3syv98s1-python3-3.13.11/lib/python3.13/http/client.py", line 1353, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nix/store/slhpx9glq7vl99bwi93bgrhn3syv98s1-python3-3.13.11/lib/python3.13/http/client.py", line 1113, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/nix/store/slhpx9glq7vl99bwi93bgrhn3syv98s1-python3-3.13.11/lib/python3.13/http/client.py", line 1057, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/connection.py", line 331, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/nix/store/7y4kwfy5la7zpv8m36r1klcgv4rm0h0v-python3.13-requests-2.32.5/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/nix/store/smz6ypxwsszlmraxqd65g0gq3xs924r4-python3.13-urllib3-2.6.0/lib/python3.13/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /auth/login (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 111] Connection refused"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/nix/store/mmr9f70jcf9fxb6xypas64mg9bipjlbh-python3.13-tavern-3.2.0/lib/python3.13/site-packages/tavern/_plugins/rest/request.py", line 505, in run
+    return self._prepared()
+           ~~~~~~~~~~~~~~^^
+  File "/nix/store/mmr9f70jcf9fxb6xypas64mg9bipjlbh-python3.13-tavern-3.2.0/lib/python3.13/site-packages/tavern/_plugins/rest/request.py", line 488, in prepared_request
+    return session.request(**self._request_args)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/nix/store/7y4kwfy5la7zpv8m36r1klcgv4rm0h0v-python3.13-requests-2.32.5/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/nix/store/7y4kwfy5la7zpv8m36r1klcgv4rm0h0v-python3.13-requests-2.32.5/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/nix/store/7y4kwfy5la7zpv8m36r1klcgv4rm0h0v-python3.13-requests-2.32.5/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /auth/login (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8080): Failed to establish a new connection: [Errno 111] Connection refused"))
