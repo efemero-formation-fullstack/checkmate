@@ -77,7 +77,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "result/bin/checkmate_api"
+          source: "checkmate_api"
           target: "/opt/checkmate/"
 
   deploy-gh-pages:
