@@ -1,5 +1,0 @@
-allow_redirects: false
-headers:
-  Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzcyMzg5NzQ1LCJpYXQiOjE3NzIzODI1NDV9.68z6Fwxp7YXsd41ohvSYoduOtLS9OUAs0KY5i3ENgYs
-method: GET
-url: http://localhost:8080/player/1
