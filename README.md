@@ -2,7 +2,9 @@
 
 ## 🛠 WORK IN PROGRESS 🛠
 
-[API Tests results](https://efemero-formation-fullstack.github.io/checkmate/)
+[API Tests results](https://efemero-formation-fullstack.github.io/checkmate/): These are updated automatically via github-actions
+
+[checkmate API live](https://checkmate.bastien.app): Deployed automatically via github-actions, follow the `main` branch.
 
 This is an API to organize chess tournaments.
 
