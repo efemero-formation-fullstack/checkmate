@@ -3,15 +3,12 @@ export const bodyValidator = (dataValidator) => {
     const { data, success, error } = dataValidator.safeParse(req.body);
 
     if (!success) {
-      // Le formulaire reçu n'est pas valide
-      // gerer les erreurs
       const { fieldErrors } = error.flatten();
 
       res.status(400).json({
         errors: fieldErrors,
       });
     } else {
-      // Le formulaire reçu est valide
       req.data = data;
       next();
     }
@@ -20,12 +17,7 @@ export const bodyValidator = (dataValidator) => {
 
 export const queryValidator = (dataValidator) => {
   return (req, res, next) => {
-    console.log("REQ QUERY");
-    console.log(req.query);
-
     const { data, success, error } = dataValidator.safeParse(req.query);
-    console.log("QUERY VALIDATOR DATA:");
-    console.log({ data, success, error });
     req.validatedQuery = data;
     next();
   };

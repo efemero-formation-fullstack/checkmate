@@ -64,7 +64,6 @@ export function self_or_roles(roles: PlayerRole[] = []) {
     }
     // connected, but not self -> check the role
     if (req.user.id != req.params.id && !roles.includes(req.user.role)) {
-      console.log(req.user.id, req.params.id);
       throw createError(
         403,
         `You are not the player ${req.params.id} or ${roles.join(" or ")}.`,

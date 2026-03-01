@@ -8,5 +8,8 @@ const router = Router();
 router.use(authorization_token);
 router.use("/player", player_router);
 router.use("/auth", auth_router);
+router.use("/", (_, resp) => {
+  resp.status(200).json({ documentation: "soon™" });
+});
 
 export default router;
