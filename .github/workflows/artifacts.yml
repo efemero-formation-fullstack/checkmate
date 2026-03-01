@@ -75,7 +75,11 @@ jobs:
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > deploy_key
           chmod 600 deploy_key
-          scp -o StrictHostKeyChecking=no -i deploy_key checkmate_api ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/opt/checkmate/
+          # Use SFTP batch mode to upload and rename.
+          sftp -o StrictHostKeyChecking=no -i deploy_key -b - ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} <<EOF
+            put checkmate_api /opt/checkmate/checkmate_api.tmp
+            rename /opt/checkmate/checkmate_api.tmp /opt/checkmate/checkmate_api
+          EOF
           rm deploy_key
 
   deploy-gh-pages:
