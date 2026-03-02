@@ -1,12 +1,14 @@
 body:
   errors:
-    login:
-    - 'Invalid input: expected string, received undefined'
+    fieldErrors:
+      login:
+      - 'Invalid input: expected string, received undefined'
+    formErrors: []
 headers:
   content-encoding: gzip
   content-type: application/json; charset=utf-8
-  date: Mon, 02 Mar 2026 08:10:18 GMT
-  etag: W/"4b-Fgh3Aw5YXb1hBllF5zl6homdLLQ"
+  date: Mon, 02 Mar 2026 16:01:35 GMT
+  etag: W/"6b-cgL7D5Ao2Arjl0BLqVi7bilSYkA"
   transfer-encoding: chunked
   vary: Accept-Encoding
   x-powered-by: Express
