@@ -1,7 +1,7 @@
 import process from "node:process";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Player } from "./entities/index.ts";
+import { Category, Player, Tournament } from "./entities/index.ts";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
   password: process.env.PG_PASSWORD,
   database: process.env.PG_DATABASE,
   logging: process.env.DEV.toLowerCase() === "true",
-  entities: [Player],
+  entities: [Player, Tournament, Category],
   migrations: [],
   subscribers: [],
 });

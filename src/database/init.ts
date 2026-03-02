@@ -4,23 +4,13 @@ import "dotenv/config";
 import console from "node:console";
 import process from "node:process";
 import "reflect-metadata";
-import { DataSource } from "typeorm";
-import { Gender, Player, PlayerRole } from "../entities/index.ts";
+import { AppDataSource } from "../data-source.ts";
+import { Category, Gender, Player, PlayerRole } from "../entities/index.ts";
 import players from "./checkmate_players.json" with { type: "json" };
 
-const AppDataSource = new DataSource({
-  type: "postgres",
-  host: process.env.PG_HOST,
-  port: parseInt(process.env.PG_PORT),
-  username: process.env.PG_USER,
-  password: process.env.PG_PASSWORD,
-  database: process.env.PG_DATABASE,
+AppDataSource.setOptions({
   synchronize: true,
   dropSchema: true,
-  logging: process.env.DEV.toLowerCase() === "true",
-  entities: [Player],
-  migrations: [],
-  subscribers: [],
 });
 
 try {
@@ -40,6 +30,20 @@ try {
     });
     await em.save(mr_checkmate);
 
+    // insert categories
+    for (const c of [
+      ["junior", 0, 17],
+      ["senior", 18, 59],
+      ["veteran", 60, 1000],
+    ]) {
+      const category = Category.create({
+        name: c[0],
+        min_age: c[1],
+        max_age: c[2],
+      });
+      await em.save(category);
+    }
+
     // insert players from json (1000 players from https://mockaroo.com)
     let player;
     for (player of players) {
@@ -47,6 +51,7 @@ try {
       player = Player.create(player);
       player = await em.save(player);
     }
+    // insert a test player with known password
     const test_user = Player.create({
       nickname: "test_player",
       email: "just@yo.lo",
@@ -59,6 +64,7 @@ try {
     await em.save(test_user);
     const salt = await bcrypt.genSalt();
     const password_hash = await bcrypt.hash("test_password", salt);
+    // insert a test player with known password, but hashed as bcrypt
     const test_user2 = Player.create({
       nickname: "test_player2",
       email: "just2@yo.lo",
