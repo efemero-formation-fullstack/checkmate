@@ -34,6 +34,12 @@ export class GetPlayerDTO {
   @include()
   @scope(PlayerRole.ADMIN)
   role: PlayerRole;
+  @include()
+  @scope(PlayerRole.ADMIN)
+  created_at: Date;
+  @include()
+  @scope(PlayerRole.ADMIN)
+  updated_at: Date;
 }
 
 @dto()

@@ -3,10 +3,9 @@ export const bodyValidator = (dataValidator) => {
     const { data, success, error } = dataValidator.safeParse(req.body);
 
     if (!success) {
-      const { fieldErrors } = error.flatten();
-
+      console.log(error);
       res.status(400).json({
-        errors: fieldErrors,
+        errors: error.flatten(),
       });
     } else {
       req.data = data;

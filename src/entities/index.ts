@@ -1,4 +1,3 @@
-import { Max, Min } from "class-validator";
 import {
   BaseEntity,
   Column,
@@ -87,23 +86,15 @@ export class Tournament extends BaseEntity {
   location: string;
 
   @Column({ type: "int" })
-  @Min(2)
-  @Max(32)
   min_players: number;
 
   @Column({ type: "int" })
-  @Min(2)
-  @Max(32)
   max_players: number;
 
   @Column({ type: "int", nullable: true })
-  @Min(0)
-  @Max(3000)
   min_elo: number;
 
   @Column({ type: "int", nullable: true })
-  @Min(0)
-  @Max(3000)
   max_elo: number;
 
   @ManyToMany(() => Category)
@@ -124,12 +115,6 @@ export class Tournament extends BaseEntity {
 
   @Column({ type: "date" })
   end_registration_date: Date;
-
-  @Column({ type: "enum", enum: Gender })
-  gender: Gender;
-
-  @Column({ type: "enum", enum: PlayerRole })
-  role: PlayerRole;
 
   @CreateDateColumn()
   created_at: Date;

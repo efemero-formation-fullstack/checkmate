@@ -1,0 +1,13 @@
+Bonjour {{ player.nickname }},
+
+Un nouveau tournoi vient d’être annoncé, et vous êtes dans les conditions pour y participer!
+
+Tournoi: {{ tournament.name }}
+Catégorie{% if tournament.categories.length > 1 %}s{% endif %}: {{tournament.categories | join(", ")}}
+{% if tournament.women_only %}Interdit aux hommes cisgenres{% endif %}
+
+Inscrivez-vous vite, le tournoi est limité à {{ tournament.max_players }} participants!
+
+Cordialement,
+
+Monsieur Checkmate

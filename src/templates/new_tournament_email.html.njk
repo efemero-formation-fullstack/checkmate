@@ -1,0 +1,25 @@
+<p>Bonjour {{ player.nickname }},</p>
+
+<p>
+  Un nouveau tournoi vient d’être annoncé, et vous êtes dans les conditions pour
+  y participer!
+</p>
+
+<ul>
+  <li>Tournoi: {{ tournament.name }}</li>
+  <li>
+    Catégorie{% if tournament.categories.length > 1 %}s{% endif %}:
+    {{ tournament.categories | join(", ") }}
+  </li>
+  {% if tournament.women_only %}
+    <li>Interdit aux hommes cisgenres</li>
+  {% endif %}
+</ul>
+
+<p>
+  Inscrivez-vous vite, le tournoi est limité à {{ tournament.max_players }}
+  participants!
+</p>
+<p>Cordialement,</p>
+
+<p><em>Monsieur Checkmate</em></p>
