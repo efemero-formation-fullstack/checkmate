@@ -1,7 +1,0 @@
-allow_redirects: false
-data:
-  login: MrCheckmate
-  password: SUPER_SECRET_PASSWORD
-headers: {}
-method: POST
-url: http://localhost:8080/auth/login

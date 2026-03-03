@@ -1,6 +1,0 @@
-- name: Cannot create tournament with PUT if not connected
-  request:
-    url: http://localhost:8080/tournament
-    method: PUT
-  response:
-    status_code: 401

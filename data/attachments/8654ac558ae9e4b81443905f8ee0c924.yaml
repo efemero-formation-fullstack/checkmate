@@ -1,4 +1,0 @@
-allow_redirects: false
-headers: {}
-method: GET
-url: http://localhost:8080/player/200

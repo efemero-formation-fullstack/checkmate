@@ -1,4 +1,0 @@
-allow_redirects: false
-headers: {}
-method: POST
-url: http://localhost:8080/tournament

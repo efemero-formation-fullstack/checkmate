@@ -1,8 +1,0 @@
-- name: Get inexistant user as admin must return 404
-  request:
-    url: http://localhost:8080/player/99999
-    method: GET
-    headers:
-      Authorization: "bearer {test_admin_token:s}"
-  response:
-    status_code: 404

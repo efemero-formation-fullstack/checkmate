@@ -1,9 +1,0 @@
-- name: Login as admin
-  request:
-    url: http://localhost:8080/auth/login
-    data:
-      login: MrCheckmate
-      password: SUPER_SECRET_PASSWORD
-    method: POST
-  response:
-    status_code: 200
