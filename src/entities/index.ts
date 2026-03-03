@@ -52,6 +52,9 @@ export class Player extends BaseEntity {
   @Column({ type: "enum", enum: PlayerRole })
   role: PlayerRole;
 
+  @ManyToMany(() => Tournament, (tournament) => tournament.players)
+  tournaments: Tournament[];
+
   @CreateDateColumn()
   created_at: Date;
 
@@ -100,6 +103,10 @@ export class Tournament extends BaseEntity {
   @ManyToMany(() => Category)
   @JoinTable()
   categories: Category[];
+
+  @ManyToMany(() => Player, (player) => player.tournaments)
+  @JoinTable({ name: "registrations" })
+  players: Player[];
 
   @Column({
     type: "enum",

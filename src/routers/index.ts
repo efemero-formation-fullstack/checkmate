@@ -12,6 +12,7 @@ router.use("/tournament", tournament_router);
 router.use("/auth", auth_router);
 router.use("/", (req, resp) => {
   if (req.path == "/") resp.status(200).json({ documentation: "soon™" });
+  console.log(req.params);
   resp.status(404).send();
 });
 

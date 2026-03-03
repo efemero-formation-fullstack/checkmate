@@ -29,10 +29,9 @@ tournament_router.get("/", tournament_controller.all_tournaments);
 tournament_router.get("/:id", tournament_controller.get_tournament);
 
 tournament_router.post(
-  "/:id",
-  connected_with_role([PlayerRole.ADMIN]),
-  bodyValidator(update_tournament_validator),
-  tournament_controller.update_tournament,
+  "/:id/register",
+  connected_with_role([PlayerRole.PLAYER, PlayerRole.ADMIN]),
+  tournament_controller.register,
 );
 
 tournament_router.post(

@@ -40,6 +40,7 @@ export function connected_with_role(roles: PlayerRole[] = []) {
       throw createError(401);
     }
     // connected, but not the good role
+    console.log(roles);
     if (roles.length > 0 && !roles.includes(req.user.role)) {
       throw createError(403, `You are not ${roles.join(" or ")}.`);
     }

@@ -17,3 +17,4 @@ design/
 *.nix
 justfile
 *.py
+*.fish

@@ -39,6 +39,12 @@ const tournament_controller = {
     resp.status(201).json(get_dto);
   },
 
+  register: async (req, resp) => {
+    console.log(req);
+    await tournament_service.register(req.params.id, req.user.id);
+    resp.status(200).end();
+  },
+
   all_tournaments: async (req, resp) => {
     const tournaments: Tournament[] =
       await tournament_service.get_tournaments();

@@ -5,7 +5,14 @@ import console from "node:console";
 import process from "node:process";
 import "reflect-metadata";
 import { AppDataSource } from "../data-source.ts";
-import { Category, Gender, Player, PlayerRole } from "../entities/index.ts";
+import {
+  Category,
+  Gender,
+  Player,
+  PlayerRole,
+  Tournament,
+  TournamentStatus,
+} from "../entities/index.ts";
 import players from "./checkmate_players.json" with { type: "json" };
 
 AppDataSource.setOptions({
@@ -30,6 +37,7 @@ try {
     });
     await em.save(mr_checkmate);
 
+    const categories = [];
     // insert categories
     for (const c of [
       ["junior", 0, 17],
@@ -41,7 +49,7 @@ try {
         min_age: c[1],
         max_age: c[2],
       });
-      await em.save(category);
+      categories.push(await em.save(category));
     }
 
     // insert players from json (1000 players from https://mockaroo.com)
@@ -52,8 +60,8 @@ try {
       player = await em.save(player);
     }
     // insert a test player with known password
-    const test_user = Player.create({
-      nickname: "test_player",
+    const test_user1 = Player.create({
+      nickname: "test_player1",
       email: "just@yo.lo",
       password: hash("test_password"),
       elo: 400,
@@ -61,7 +69,7 @@ try {
       gender: Gender.MALE,
       role: PlayerRole.PLAYER,
     });
-    await em.save(test_user);
+    await em.save(test_user1);
     const salt = await bcrypt.genSalt();
     const password_hash = await bcrypt.hash("test_password", salt);
     // insert a test player with known password, but hashed as bcrypt
@@ -75,6 +83,64 @@ try {
       role: PlayerRole.PLAYER,
     });
     await em.save(test_user2);
+
+    let test_user3 = Player.create({
+      nickname: "test_player3",
+      email: "just3@yo.lo",
+      password: hash("test_password"),
+      elo: 400,
+      birth_date: "1980-02-22",
+      gender: Gender.FEMALE,
+      role: PlayerRole.PLAYER,
+    });
+    test_user3 = await em.save(test_user3);
+    let test_user4 = Player.create({
+      nickname: "test_player4",
+      email: "just4@yo.lo",
+      password: hash("test_password"),
+      elo: 400,
+      birth_date: "1980-02-22",
+      gender: Gender.FEMALE,
+      role: PlayerRole.PLAYER,
+    });
+    test_user4 = await em.save(test_user4);
+    let test_user5 = Player.create({
+      nickname: "test_player5",
+      email: "just5@yo.lo",
+      password: hash("test_password"),
+      elo: 1400,
+      birth_date: "1980-02-22",
+      gender: Gender.OTHER,
+      role: PlayerRole.PLAYER,
+    });
+    test_user5 = test_user5 = await em.save(test_user5);
+    let test_user6 = Player.create({
+      nickname: "test_player6",
+      email: "just6@yo.lo",
+      password: hash("test_password"),
+      birth_date: "1980-02-22",
+      gender: Gender.FEMALE,
+      role: PlayerRole.PLAYER,
+    });
+    test_user6 = await em.save(test_user6);
+    const test_tournament: Tournament = Tournament.create({
+      name: "Test Tournament Challenge Opens Master",
+      location: "Nowhere",
+      min_players: 2,
+      max_players: 3,
+      min_elo: 1000,
+      max_elo: 1600,
+      categories: categories.filter((c) =>
+        ["senior", "veteran"].includes(c.name),
+      ),
+      status: TournamentStatus.PENDING,
+      women_only: true,
+      end_registration_date: new Date(),
+      players: [test_user3, test_user4],
+    });
+    await em.save(test_tournament, {
+      relations: { categories: true, players: true },
+    });
   });
 } catch (e) {
   console.log(e);

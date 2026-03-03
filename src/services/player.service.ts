@@ -2,7 +2,7 @@ import { Player } from "../entities/index.ts";
 
 const player_service = {
   get_players: async function (): Promise<Player[]> {
-    const players = await Player.find({ take: 100 });
+    const players = await Player.find();
     return players;
   },
 
