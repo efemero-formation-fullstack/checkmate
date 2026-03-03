@@ -12,15 +12,15 @@ This is an API to organize chess tournaments.
 
 `POST` `login=NICKNAME_OR_EMAIL&pasword=PASSWORD` `/auth/login` to get a JWT
 
-`POST` or `PUT` json `/player/` as `admin` to create a player
-`GET` `/player/` as `admin` to get all players
-`GET` `/player/:id` as `admin` or as `player:id` to get one player
-`POST` json `/player/:id` as `admin` or as `player:id` to update one player
+`POST` or `PUT` json `/player/` as `admin` to create a player  
+`GET` `/player/` as `admin` to get all players  
+`GET` `/player/:id` as `admin` or as `player:id` to get one player  
+`POST` json `/player/:id` as `admin` or as `player:id` to update one player  
 `DELETE` `/player/:id` as `admin` to delete one player
 
-`POST` or `PUT` json `/tournament/` to create a tournament
-`GET` `/tournament/` to get all tournaments
-`GET` `/tournament/:id` to get one tournament
+`POST` or `PUT` json `/tournament/` to create a tournament  
+`GET` `/tournament/` to get all tournaments  
+`GET` `/tournament/:id` to get one tournament  
 `POST` `/tournament/:id/register` as `admin` or `player` to register to a tournament
 
 ## Technologies used
