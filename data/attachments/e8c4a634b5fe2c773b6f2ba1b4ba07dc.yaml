@@ -1,0 +1,14 @@
+body:
+  message: Internal server error
+  statusCode: 500
+  succes: false
+headers:
+  content-encoding: gzip
+  content-type: application/json; charset=utf-8
+  date: Tue, 03 Mar 2026 16:48:41 GMT
+  etag: W/"43-5M52+Ywy2ZgIX9qOpurfd8cmTpw"
+  transfer-encoding: chunked
+  vary: Accept-Encoding
+  x-powered-by: Express
+redirect_query_params: {}
+status_code: 500

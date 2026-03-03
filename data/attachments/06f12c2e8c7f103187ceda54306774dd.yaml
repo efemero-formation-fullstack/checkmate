@@ -1,0 +1,14 @@
+allow_redirects: false
+headers:
+  Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAwMiwicm9sZSI6InBsYXllciIsImV4cCI6MTc3MjU2MzcyMSwiaWF0IjoxNzcyNTU2NTIxfQ.v8Oi6NtRT73E6DmGwHdILFqn4BiR9ifJq7qb4mwHH7w
+  Content-type: application/json
+json:
+  categories:
+  - senior
+  - veteran
+  end_registration_date: '2026-03-12'
+  max_players: 16
+  min_players: 8
+  name: bigblue challenge 2026 56285ab0-d4a5-4f5a-b5d7-3916cfba88d6
+method: POST
+url: http://localhost:8080/tournament
