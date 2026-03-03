@@ -1,0 +1,15 @@
+body:
+  errors:
+    fieldErrors: {}
+    formErrors:
+    - max_player must be greater or equal than min_player
+headers:
+  content-encoding: gzip
+  content-type: application/json; charset=utf-8
+  date: Tue, 03 Mar 2026 14:48:39 GMT
+  etag: W/"62-NE9DpbEnbQe8bSEOgiSgo1Agwko"
+  transfer-encoding: chunked
+  vary: Accept-Encoding
+  x-powered-by: Express
+redirect_query_params: {}
+status_code: 400

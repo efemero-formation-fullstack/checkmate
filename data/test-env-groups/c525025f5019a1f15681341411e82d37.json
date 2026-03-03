@@ -1,1 +1,1 @@
-{"id":"c525025f5019a1f15681341411e82d37","fullName":"tests.tavern.login.tavern#Test of the auth/login endpoint","name":"Test of the auth/login endpoint","status":"broken","testResultsByEnv":{"default":"27f805a21b4d99c086a1d05528e4196f"}}
+{"id":"c525025f5019a1f15681341411e82d37","fullName":"tests.tavern.login.tavern#Test of the auth/login endpoint","name":"Test of the auth/login endpoint","status":"passed","testResultsByEnv":{"default":"20a539c5feccc80e2dfc7343bea26b0b"}}

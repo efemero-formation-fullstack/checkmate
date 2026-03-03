@@ -1,0 +1,31 @@
+body:
+  categories:
+  - id: 2
+    max_age: 59
+    min_age: 18
+    name: senior
+  - id: 3
+    max_age: 1000
+    min_age: 60
+    name: veteran
+  current_round: 0
+  end_registration_date: '2026-03-12'
+  id: 7
+  location: null
+  max_elo: 600
+  max_players: 16
+  min_elo: 600
+  min_players: 8
+  name: bigblue challenge 2026 d9c5e240-0769-44e6-9a46-1eadd1fa728b
+  status: pending
+  women_only: false
+headers:
+  content-encoding: gzip
+  content-type: application/json; charset=utf-8
+  date: Tue, 03 Mar 2026 14:48:39 GMT
+  etag: W/"16f-rwlWX9RROuTrxw981966naEb7o4"
+  transfer-encoding: chunked
+  vary: Accept-Encoding
+  x-powered-by: Express
+redirect_query_params: {}
+status_code: 201

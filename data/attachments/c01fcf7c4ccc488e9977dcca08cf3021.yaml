@@ -1,0 +1,6 @@
+- name: Cannot get user if not connected
+  request:
+    url: http://localhost:8080/player/200
+    method: GET
+  response:
+    status_code: 401

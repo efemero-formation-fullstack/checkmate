@@ -1,0 +1,16 @@
+body:
+  errors:
+    fieldErrors:
+      min_players:
+      - 'Invalid input: expected number, received undefined'
+    formErrors: []
+headers:
+  content-encoding: gzip
+  content-type: application/json; charset=utf-8
+  date: Tue, 03 Mar 2026 14:48:39 GMT
+  etag: W/"71-GdWcSRDMlvqUTMTCE81TqpOOf6U"
+  transfer-encoding: chunked
+  vary: Accept-Encoding
+  x-powered-by: Express
+redirect_query_params: {}
+status_code: 400

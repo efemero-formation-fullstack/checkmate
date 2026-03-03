@@ -1,0 +1,11 @@
+allow_redirects: false
+headers:
+  Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzcyNTU2NTE5LCJpYXQiOjE3NzI1NDkzMTl9.6PKPhoUmsOgzMslnUfgNXQdD3JAuNZuMYCqfLGAzJSc
+  Content-type: application/json
+json:
+  end_registration_date: '2026-03-12'
+  max_players: 16
+  min_players: 8
+  name: bigblue challenge 2026 b1cc714b-8b1e-4af1-b3c3-f278b1f383d4
+method: POST
+url: http://localhost:8080/tournament

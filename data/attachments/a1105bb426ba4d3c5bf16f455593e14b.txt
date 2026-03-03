@@ -1,0 +1,17 @@
+[32mINFO    [0m tavern._core.run:run.py:177 Running test : Test of the /player/:id endpoint
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Get a player JWT
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Get an admin JWT
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Cannot get user if not connected
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [401]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Cannot get user if not admin or self
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [403]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Get user as self
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Get user as admin
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Get user as admin and self
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Get inexistant user as admin must return 404
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [404]>'

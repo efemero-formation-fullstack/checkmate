@@ -1,0 +1,6 @@
+- name: Cannot create tournament with POST if not connected
+  request:
+    url: http://localhost:8080/tournament
+    method: POST
+  response:
+    status_code: 401

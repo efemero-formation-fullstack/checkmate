@@ -1,0 +1,8 @@
+allow_redirects: false
+data:
+  login: test_player1
+  other: anything
+  password: test_password
+headers: {}
+method: POST
+url: http://localhost:8080/auth/login

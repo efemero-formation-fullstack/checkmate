@@ -1,0 +1,12 @@
+- name: Create tournament with POST
+  request:
+    url: http://localhost:8080/tournament
+    method: POST
+    headers:
+      Authorization: "bearer {test_admin_token:s}"
+      Content-type: application/json
+    json:
+      $ext:
+        function: tests.tavern.utils:fixed_valid_tournament
+  response:
+    status_code: 201
