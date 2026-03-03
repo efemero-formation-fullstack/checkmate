@@ -1,1 +1,1 @@
-{"id":"10211d233d550f0e1f153a396d930aa0","fullName":"tests.tavern.tournament.tavern#Test of the /tournament/ endpoint","name":"Test of the /tournament/ endpoint","status":"passed","testResultsByEnv":{"default":"03bbdaba4889a2d79ddccf98d71b1f57"}}
+{"id":"10211d233d550f0e1f153a396d930aa0","fullName":"tests.tavern.tournament.tavern#Test of the /tournament/ endpoint","name":"Test of the /tournament/ endpoint","status":"broken","testResultsByEnv":{"default":"da34f4028abf045a3476f35f5f8f60da"}}

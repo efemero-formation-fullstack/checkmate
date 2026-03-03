@@ -1,0 +1,16 @@
+[32mINFO    [0m tavern._core.run:run.py:177 Running test : Test of the /tournament/ endpoint
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Get a player JWT
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Get an admin JWT
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [200]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Cannot create tournament with PUT if not connected
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [401]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Cannot create tournament with POST if not connected
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [401]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Cannot create tournament with PUT if not admin
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [403]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Cannot create tournament with POST if not admin
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [403]>'
+[32mINFO    [0m tavern._core.run:run.py:370 Running stage : Create tournament with PUT
+[32mINFO    [0m tavern._plugins.common.response:response.py:64 Response: '<Response [500]>'
+[31m[1mERROR   [0m tavern.response:response.py:44 Status code was 500, expected 201
