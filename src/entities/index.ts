@@ -111,6 +111,7 @@ export class Tournament extends BaseEntity {
   @Column({ type: "int", default: 0 })
   current_round: number;
 
+  @Column()
   women_only: boolean;
 
   @Column({ type: "date" })

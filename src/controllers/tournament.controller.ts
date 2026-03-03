@@ -1,11 +1,12 @@
 import { buildMapper } from "dto-mapper";
 import createError from "http-errors";
+import { In } from "typeorm";
 import {
   CreateTournamentDTO,
   GetTournamentDTO,
   UpdateTournamentDTO,
 } from "../dtos/tournament.dto.ts";
-import { Tournament } from "../entities/index.ts";
+import { Category, Tournament } from "../entities/index.ts";
 import tournament_service from "../services/tournament.service.ts";
 
 const create_mapper = buildMapper(CreateTournamentDTO);
@@ -15,9 +16,15 @@ const update_mapper = buildMapper(UpdateTournamentDTO);
 const tournament_controller = {
   create_tournament: async (req, resp) => {
     const create_dto = create_mapper.deserialize(req.data);
+    const categories: Category[] = await Category.findBy({
+      name: In(create_dto.categories),
+    });
+    create_dto.categories = categories;
     let tournament: Tournament;
     try {
-      tournament = await Tournament.save(create_dto);
+      tournament = await Tournament.save(create_dto, {
+        relations: { categories: true },
+      });
     } catch (e) {
       if (e.code && e.code == 23505) {
         throw createError(

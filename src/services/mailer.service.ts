@@ -30,6 +30,6 @@ export async function send_email(receiver, subject, text_body, html_body) {
     });
     console.log(info);
   } else {
-    console.log(`sending email ${subject} to ${receiver}:\n${text_body}\n`);
+    console.log(`sending email ${subject} to ${receiver}`);
   }
 }
