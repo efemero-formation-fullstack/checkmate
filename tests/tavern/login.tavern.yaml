@@ -43,7 +43,7 @@ stages:
     request:
       url: http://localhost:8080/auth/login
       data:
-        login: test_player
+        login: test_player1
         password: not_the_password
       method: POST
     response:
@@ -53,7 +53,7 @@ stages:
     request:
       url: http://localhost:8080/auth/login
       data:
-        login: test_player
+        login: test_player1
         password: test_password
       method: POST
     response:
@@ -72,7 +72,7 @@ stages:
     request:
       url: http://localhost:8080/auth/login
       data:
-        login: test_player
+        login: test_player1
         password: test_password
       method: POST
     response:
@@ -92,7 +92,7 @@ stages:
     request:
       url: http://localhost:8080/auth/login
       data:
-        login: test_player
+        login: test_player1
         password: test_password
         other: anything
       method: POST
