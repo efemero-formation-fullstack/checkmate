@@ -10,12 +10,22 @@ import { send_template } from "./mailer.service.ts";
 
 const tournament_service = {
   get_tournaments: async function (): Promise<Tournament[]> {
-    const tournaments = await Tournament.find();
+    const tournaments = await Tournament.find({
+      relations: { categories: true, players: true },
+    });
     return tournaments;
   },
 
   get_tournament: async function (id: number) {
-    const tournament = await Tournament.findOneBy({ id: id });
+    const tournament = await Tournament.findOne({
+      where: {
+        id: id,
+      },
+      relations: {
+        categories: true,
+        players: true,
+      },
+    });
     return tournament;
   },
 

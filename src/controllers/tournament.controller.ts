@@ -2,8 +2,10 @@ import { buildMapper } from "dto-mapper";
 import createError from "http-errors";
 import { In } from "typeorm";
 import {
+  CategoryDTO,
   CreateTournamentDTO,
   GetTournamentDTO,
+  PlayerDTO,
   UpdateTournamentDTO,
 } from "../dtos/tournament.dto.ts";
 import { Category, Tournament } from "../entities/index.ts";
@@ -12,7 +14,23 @@ import tournament_service from "../services/tournament.service.ts";
 const create_mapper = buildMapper(CreateTournamentDTO);
 const get_mapper = buildMapper(GetTournamentDTO);
 const update_mapper = buildMapper(UpdateTournamentDTO);
+const player_mapper = buildMapper(PlayerDTO);
+const category_mapper = buildMapper(CategoryDTO);
 
+function recursive_tournament_DTO(tournament: Tournament): GetTournamentDTO {
+  const tournament_dto = get_mapper.serialize(tournament);
+  const categories: CategoryDTO[] = [];
+  const players: PlayerDTO[] = [];
+  for (const category of tournament.categories) {
+    categories.push(category_mapper.serialize(category));
+  }
+  for (const player of tournament.players) {
+    players.push(player_mapper.serialize(player));
+  }
+  tournament_dto.categories = categories;
+  tournament_dto.players = players;
+  return tournament_dto;
+}
 const tournament_controller = {
   create_tournament: async (req, resp) => {
     const create_dto = create_mapper.deserialize(req.data);
@@ -35,7 +53,7 @@ const tournament_controller = {
       throw e;
     }
     await tournament_service.send_new_tournament_emails(tournament);
-    const get_dto = get_mapper.serialize(tournament);
+    const get_dto = recursive_tournament_DTO(tournament);
     resp.status(201).json(get_dto);
   },
 
@@ -50,7 +68,7 @@ const tournament_controller = {
       await tournament_service.get_tournaments();
     const dtos = [];
     for (const tournament of tournaments) {
-      dtos.push(get_mapper.serialize(tournament));
+      dtos.push(recursive_tournament_DTO(tournament));
     }
     resp.status(200).json(dtos);
   },
@@ -60,7 +78,7 @@ const tournament_controller = {
     if (!tournament) {
       throw createError(404);
     }
-    const dto = get_mapper.serialize(tournament);
+    const dto = recursive_tournament_DTO(tournament);
     resp.status(200).json(dto);
   },
 

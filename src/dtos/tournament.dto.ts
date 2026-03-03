@@ -24,6 +24,24 @@ export class CreateTournamentDTO {
 }
 
 @dto()
+export class PlayerDTO {
+  @include()
+  nickname: string;
+  @include()
+  elo: number;
+}
+
+@dto()
+export class CategoryDTO {
+  @include()
+  name: string;
+  @include()
+  min_age: number;
+  @include()
+  max_age: number;
+}
+
+@dto()
 export class GetTournamentDTO {
   @include()
   id: number;
@@ -40,7 +58,9 @@ export class GetTournamentDTO {
   @include()
   max_elo: number;
   @include()
-  categories: Category[];
+  players: PlayerDTO[];
+  @include()
+  categories: CategoryDTO[];
   @include()
   status: TournamentStatus;
   @include()

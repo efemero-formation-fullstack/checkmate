@@ -88,6 +88,7 @@
           prettier
           just
           tavern
+          jq
         ];
       in
       {
