@@ -12,7 +12,7 @@ const tournament_router = Router();
 
 tournament_router.post(
   "/",
-  // connected_with_role([PlayerRole.ADMIN]),
+  connected_with_role([PlayerRole.ADMIN]),
   bodyValidator(create_tournament_validator),
   tournament_controller.create_tournament,
 );

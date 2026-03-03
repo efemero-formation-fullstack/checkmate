@@ -1,0 +1,250 @@
+test_name: Test of the /tournament/ endpoint
+
+stages:
+  - name: Get a player JWT
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        login: test_player
+        password: test_password
+      method: POST
+    response:
+      status_code: 200
+      save:
+        json:
+          test_player_token: access_token
+
+  - name: Get an admin JWT
+    request:
+      url: http://localhost:8080/auth/login
+      data:
+        login: MrCheckmate
+        password: SUPER_SECRET_PASSWORD
+      method: POST
+    response:
+      status_code: 200
+      save:
+        json:
+          test_admin_token: access_token
+
+  - name: Cannot create tournament with PUT if not connected
+    request:
+      url: http://localhost:8080/tournament
+      method: PUT
+    response:
+      status_code: 401
+
+  - name: Cannot create tournament with POST if not connected
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+    response:
+      status_code: 401
+
+  - name: Cannot create tournament with PUT if not admin
+    request:
+      url: http://localhost:8080/tournament
+      method: PUT
+      headers:
+        Authorization: "bearer {test_player_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:always_valid_tournament
+    response:
+      status_code: 403
+
+  - name: Cannot create tournament with POST if not admin
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_player_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:always_valid_tournament
+    response:
+      status_code: 403
+
+  - name: Create tournament with PUT
+    request:
+      url: http://localhost:8080/tournament
+      method: PUT
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:always_valid_tournament
+    response:
+      status_code: 201
+
+  - name: Create tournament with POST
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:always_valid_tournament
+    response:
+      status_code: 201
+
+  - name: Create tournament with POST
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:fixed_valid_tournament
+    response:
+      status_code: 201
+
+  - name: Create twice the same tournament must fail
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:fixed_valid_tournament
+    response:
+      status_code: 400
+
+  - name: Missing name in tournament must fail
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:invalid_tournament_missing_name
+    response:
+      status_code: 400
+
+  - name: Missing max_players in tournament must fail
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:invalid_tournament_missing_max_players
+    response:
+      status_code: 400
+
+  - name: Missing min_players in tournament must fail
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:invalid_tournament_missing_min_players
+    response:
+      status_code: 400
+
+  - name: max_players < min_players in tournament must fail
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:invalid_tournament_max_players_lt_min_players
+    response:
+      status_code: 400
+
+  - name: max_players == min_players in tournament is OK
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:valid_tournament_max_players_eq_min_players
+    response:
+      status_code: 201
+
+  - name: Missing categories in tournament must fail
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:invalid_tournament_missing_categories
+    response:
+      status_code: 400
+
+  - name: Missing end_registration in tournament must fail
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:invalid_tournament_missing_end_registration_date
+    response:
+      status_code: 400
+
+  - name: Bad end_registration in tournament must fail
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:invalid_tournament_bad_end_registration_date
+    response:
+      status_code: 400
+
+  - name: max_elo < min_elo in tournament must fail
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:invalid_tournament_max_elo_lt_min_elo
+    response:
+      status_code: 400
+
+  - name: max_elo == min_elo in tournament is OK
+    request:
+      url: http://localhost:8080/tournament
+      method: POST
+      headers:
+        Authorization: "bearer {test_admin_token:s}"
+        Content-type: application/json
+      json:
+        $ext:
+          function: tests.tavern.utils:valid_tournament_max_elo_eq_min_elo
+    response:
+      status_code: 201

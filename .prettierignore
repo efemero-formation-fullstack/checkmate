@@ -16,3 +16,4 @@ design/
 *.txt.njk
 *.nix
 justfile
+*.py
